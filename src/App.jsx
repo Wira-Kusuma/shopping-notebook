@@ -1,6 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './index.css'
-import { useEffect } from 'react';
 
 
 const shoppingItem= [
@@ -8,7 +7,7 @@ const shoppingItem= [
     id:1,
     name:"Pushup 100 times",
     checked:false
-  },  
+  }
 ]
 
 
@@ -31,10 +30,39 @@ const shoppingItem= [
       )
     ));
   }
+
+  //toggle theme
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // useEffect untuk menambah/menghapus class "dark" di element html
+  useEffect(() => {
+    // Ambil element html (root element)
+    const root = document.documentElement;
+    const moon = document.getElementById("moon");
+    const sun = document.getElementById("sun");
+    
+    // Cek apakah dark mode aktif
+    if (isDarkMode) {
+      // Jika dark mode aktif, tambahkan class "dark" ke html element
+      root.classList.add("dark");
+      moon.style.display="none";
+      sun.style.display="flex";
+    } else {
+      // Jika light mode, hapus class "dark" dari html element
+      root.classList.remove("dark");
+      moon.style.display="flex";
+      sun.style.display="none";
+    }
+  }, [isDarkMode]); 
+
+  const toggleTheme = () => {
+    // Balik nilai isDarkMode (true jadi false, false jadi true)
+    setIsDarkMode(!isDarkMode);
+  };
   
   return(
     <main>
-      <Header />
+      <Header toggleTheme={toggleTheme}/>
       <Form onAddItem={handleAddItem}/>
       <List items={items} onDeleteItem={handleDeleteItem} handleToggleItem={handleToggleItem}/>
     </main>
@@ -42,8 +70,14 @@ const shoppingItem= [
 
 }
 
-function Header() {
-  return <h1>To Do</h1>
+function Header({toggleTheme}) {
+  return (
+  <header>
+    <h1>To Do</h1>
+    <img src="images/icon-moon.svg" alt="moon icon dark mode" onClick={toggleTheme} id='moon'/>
+    <img src="images/icon-sun.svg" alt="moon icon dark mode" onClick={toggleTheme} id='sun'/>
+  </header>
+)
 }
 
 function Form({onAddItem}) {
@@ -86,7 +120,7 @@ function Item({item, onDeleteItem, handleToggleItem}) {
     <li key={item.id}>
       <input type="checkbox" checked={item.checked} onChange={() => handleToggleItem(item.id)} className='checkbox'/>
       <span style={item.checked ? {textDecoration:"line-through"} : {} }>
-        {item.name}
+        <p>{item.name}</p>
       </span>
       <img src="/images/icon-cross.svg" alt="close icon" onClick={() => onDeleteItem(item.id)}/>
     </li>

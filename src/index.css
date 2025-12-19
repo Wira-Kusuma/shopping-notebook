@@ -1,18 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Epilogue:ital,wght@0,100..900;1,100..900&family=Figtree:ital,wght@0,300..900;1,300..900&family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Manrope:wght@200..800&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Red+Hat+Text:ital,wght@0,300..700;1,300..700&family=Roboto:ital,wght@0,100..900;1,100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family:"Josefin Sans",Arial, Helvetica, sans-serif;
   box-sizing: border-box;
+  font-weight: 400;
 }
 
 :root {
   --bs-body-bg: hsl(0, 0%, 98%);
   --bs-box-bg: hsl(0, 0%, 98%);
+  --text: hsl(235, 19%, 35%);
+  --shadow:0 0 40px 0.5px rgba(0, 0, 0, 0.200);
 }
 
-[data-bs-theme="dark"] {
+:root.dark {
     --bs-body-bg: hsl(235, 21%, 11%);
     --bs-box-bg: hsl(235, 24%, 19%);
+    --text:hsl(234, 39%, 85%);
+    --shadow: ;
 }
 
 body {
@@ -41,12 +48,29 @@ main {
   flex-direction: column;
 }
 
-h1 {
-  width: fit-content;
-  text-align: center;
-  height: fit-content;
+header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
   padding: 1rem;
+}
+
+header img {
+  width: 2rem;
+  height: 2rem;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+h1 {
   color: white;
+  font-weight: 700;
+}
+
+p {
+  font-size: 18px;
+  color: var(--text);
 }
 
 .list {
@@ -55,7 +79,7 @@ h1 {
   justify-content: center;
   align-items: center;
   overflow-y: auto;
-  box-shadow: 0 0 40px 0.5px rgba(0, 0, 0, 0.171);
+  box-shadow: var(--shadow);
   border-radius: 5px;
 }
 
@@ -119,7 +143,8 @@ form>input {
   background-color: var(--bs-box-bg);
 }
 form> input:focus {
-  box-shadow: rgba(255, 255, 255, 0.199) 0px 0px 10px 10px;
+  box-shadow: var(--shadow);
+  outline: none;
 }
 
 form>button {
@@ -132,4 +157,10 @@ form>button {
   width: 1.3rem;
   height: 1.3rem;
   cursor: pointer;
+}
+
+@media screen and (max-width:40rem) {
+  body {
+    background-image: url(/images/bg-mobile-light.jpg);
+  }
 }
