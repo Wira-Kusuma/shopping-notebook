@@ -7,7 +7,7 @@ const shoppingItem= [
   {
     id:1,
     name:"Pushup 100 times",
-    checked:true
+    checked:false
   },  
 ]
 
@@ -43,7 +43,7 @@ const shoppingItem= [
 }
 
 function Header() {
-  return <h1>ToDoList</h1>
+  return <h1>To Do</h1>
 }
 
 function Form({onAddItem}) {
@@ -63,7 +63,6 @@ function Form({onAddItem}) {
     <form className='add' onSubmit={handleSubmit}>
       <input type="text" placeholder='add new item' value={name} onChange={(e) => setName(e.target.value)}/>
 
-      <button type="submit" >add</button>
     </form>
   )
 }
@@ -89,7 +88,7 @@ function Item({item, onDeleteItem, handleToggleItem}) {
       <span style={item.checked ? {textDecoration:"line-through"} : {} }>
         {item.name}
       </span>
-      <img src="../public/images/icon-cross.svg" alt="close icon" onClick={() => onDeleteItem(item.id)}/>
+      <img src="/images/icon-cross.svg" alt="close icon" onClick={() => onDeleteItem(item.id)}/>
     </li>
   )
 }

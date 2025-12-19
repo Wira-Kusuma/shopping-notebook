@@ -6,19 +6,28 @@
 }
 
 :root {
-  -Blue-500: hsl(220, 98%, 61%);
+  --bs-body-bg: hsl(0, 0%, 98%);
+  --bs-box-bg: hsl(0, 0%, 98%);
+}
+
+[data-bs-theme="dark"] {
+    --bs-body-bg: hsl(235, 21%, 11%);
+    --bs-box-bg: hsl(235, 24%, 19%);
 }
 
 body {
   width: 100vw;
   height: 100vh;
   background-image: url(/images/bg-desktop-light.jpg);
+  background-color: var(--bs-body-bg);
   background-repeat: no-repeat;
   background-size:contain;
   background-position: top;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 main {
@@ -30,7 +39,6 @@ main {
   justify-content: center;
   align-items: start;
   flex-direction: column;
-  box-shadow: 0 0 10px 0.5px rgba(0, 0, 0, 0.171);
 }
 
 h1 {
@@ -38,6 +46,7 @@ h1 {
   text-align: center;
   height: fit-content;
   padding: 1rem;
+  color: white;
 }
 
 .list {
@@ -46,6 +55,8 @@ h1 {
   justify-content: center;
   align-items: center;
   overflow-y: auto;
+  box-shadow: 0 0 40px 0.5px rgba(0, 0, 0, 0.171);
+  border-radius: 5px;
 }
 
 ul {
@@ -53,7 +64,6 @@ ul {
   height: 25rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 10px 0.5px rgba(0, 0, 0, 0.171);
 }
 
 ul>li:first-child{
@@ -67,12 +77,11 @@ ul>li:last-child{
 
 li {
   border-bottom: 1px rgba(0, 0, 0, 0.301) solid;
-  box-shadow: 0 0 10px 0.5px rgba(0, 0, 0, 0.171);
   padding: 1rem;
-  background-color: white;
+  background-color: var(--bs-box-bg);
   display: flex;
   gap: 1rem;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -90,7 +99,6 @@ li > button {
 }
 
 li>img {
-  justify-self: end;
   cursor: pointer;
   user-select: none;
   -webkit-user-drag: none;
@@ -103,11 +111,12 @@ form {
 
 form>input {
   padding: 1rem;
-  width: 15rem;
+  width: 20rem;
   font-size: 1rem;
   transition: ease-in-out 0.2s;
   border-radius: 10px;
-  border: 1px solid;
+  border: unset;
+  background-color: var(--bs-box-bg);
 }
 form> input:focus {
   box-shadow: rgba(255, 255, 255, 0.199) 0px 0px 10px 10px;
@@ -120,7 +129,7 @@ form>button {
 }
 
 .checkbox {
-  width: 1rem;
-  height: 1rem;
+  width: 1.3rem;
+  height: 1.3rem;
   cursor: pointer;
 }
