@@ -176,4 +176,9 @@ form>button {
     --shadow: ;
     --bg-img: url(/images/bg-mobile-dark.jpg);
   }
+
+  main {
+    width: 90%;
+    max-width: 100%;
+  }
 }
