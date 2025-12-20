@@ -37,7 +37,9 @@ const shoppingItem= [
   }
 
   function handleClearItem() {
+    if (window.confirm("Delete all task?")) {
     setItems([]);
+  }
   }
 
   //toggle theme
