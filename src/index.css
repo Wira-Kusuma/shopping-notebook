@@ -14,6 +14,7 @@
   --bs-box-bg: hsl(0, 0%, 98%);
   --text: hsl(235, 19%, 35%);
   --text-btm:hsl(236, 9%, 61%);
+  --hover:hsl(220, 98%, 61%);
   --shadow:0 0 40px 0.5px rgba(0, 0, 0, 0.200);
   --bg-img: url(/images/bg-desktop-light.jpg);
 }
@@ -107,6 +108,9 @@ ul>li:last-child>p{
   font-size: 0.9rem;
   color: var(--text-btm);
   cursor: pointer;
+}
+ul>li:last-child>p:hover{
+  color: hsl(220, 98%, 61%);
 }
 
 li {
