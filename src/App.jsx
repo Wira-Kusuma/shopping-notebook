@@ -47,7 +47,7 @@ const shoppingItem= [
       root.classList.add("dark");
       moon.style.display="none";
       sun.style.display="flex";
-    } else {
+    } else { 
       // Jika light mode, hapus class "dark" dari html element
       root.classList.remove("dark");
       moon.style.display="flex";
@@ -96,7 +96,6 @@ function Form({onAddItem}) {
   return(
     <form className='add' onSubmit={handleSubmit}>
       <input type="text" placeholder='add new item' value={name} onChange={(e) => setName(e.target.value)}/>
-
     </form>
   )
 }

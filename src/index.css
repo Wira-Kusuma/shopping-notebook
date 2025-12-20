@@ -6,6 +6,7 @@
   font-family:"Josefin Sans",Arial, Helvetica, sans-serif;
   box-sizing: border-box;
   font-weight: 400;
+  color: var(--text);
 }
 
 :root {
@@ -13,6 +14,7 @@
   --bs-box-bg: hsl(0, 0%, 98%);
   --text: hsl(235, 19%, 35%);
   --shadow:0 0 40px 0.5px rgba(0, 0, 0, 0.200);
+  --bg-img: url(/images/bg-desktop-light.jpg);
 }
 
 :root.dark {
@@ -20,28 +22,26 @@
     --bs-box-bg: hsl(235, 24%, 19%);
     --text:hsl(234, 39%, 85%);
     --shadow: ;
+    --bg-img: url(/images/bg-desktop-dark.jpg);
 }
 
 body {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-image: url(/images/bg-desktop-light.jpg);
+  background-image: var(--bg-img) ;
   background-color: var(--bs-body-bg);
   background-repeat: no-repeat;
   background-size:contain;
   background-position: top;
-  display: flex;
-  justify-content: center;
-  align-items: start;
   transition: all 0.3s ease;
   overflow: hidden;
 }
 
 main {
-  margin: 2rem 0;
+  margin: 5rem auto;
   padding: 1rem;
   gap: 1rem;
-  width: fit-content;
+  width: 30%;
   height: fit-content;
   display: flex;
   justify-content: center;
@@ -131,15 +131,14 @@ li>img {
 }
 
 form {
-  display: flex;
-  gap: 1rem;
+  width: 100%;
 }
 
 form>input {
   padding: 1rem;
-  width: 20rem;
+  width: 100%;
   font-size: 1rem;
-  transition: ease-in-out 0.2s;
+  transition: ease-in-out 0.3s;
   border-radius: 10px;
   border: unset;
   background-color: var(--bs-box-bg);
@@ -162,7 +161,19 @@ form>button {
 }
 
 @media screen and (max-width:40rem) {
-  body {
-    background-image: url(/images/bg-mobile-light.jpg);
+  :root {
+  --bs-body-bg: hsl(0, 0%, 98%);
+  --bs-box-bg: hsl(0, 0%, 98%);
+  --text: hsl(235, 19%, 35%);
+  --shadow:0 0 40px 0.5px rgba(0, 0, 0, 0.200);
+  --bg-img: url(/images/bg-mobile-light.jpg);
+  }
+
+  :root.dark {
+    --bs-body-bg: hsl(235, 21%, 11%);
+    --bs-box-bg: hsl(235, 24%, 19%);
+    --text:hsl(234, 39%, 85%);
+    --shadow: ;
+    --bg-img: url(/images/bg-mobile-dark.jpg);
   }
 }
