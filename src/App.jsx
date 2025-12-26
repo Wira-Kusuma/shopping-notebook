@@ -15,6 +15,16 @@ const shoppingItem = [
     name: "Debugging 12 hours",
     checked: false,
   },
+  {
+    id: 3,
+    name: "buy iphone 17",
+    checked: false,
+  },
+  {
+    id: 4,
+    name: "spend retirement savings to gacha in genshin impact",
+    checked: true,
+  },
 ];
 
 export default function App() {
@@ -73,15 +83,44 @@ export default function App() {
     setIsDarkMode(!isDarkMode);
   };
 
+  // filtering
+  const [filter, setFilter] = useState("all"); // "all" | "active" | "completed"
+
+
+  function filterActive(){
+    setFilter("active");
+    items(filteredItems);
+  }
+
+  function showAll(){
+    setFilter("all");
+    items(filteredItems);
+  }
+
+  function filterComplete(){
+    setFilter("completed");
+    items(filteredItems);
+  }
+
+  const filteredItems = items.filter(item => {
+    if (filter === "all") return true;
+    if (filter === "active") return item.checked === false;
+    if (filter === "completed") return item.checked === true;
+    return true;
+  });
+
   return (
     <main>
       <Header toggleTheme={toggleTheme} />
       <Form onAddItem={handleAddItem} />
       <List
-        items={items}
+        items={filteredItems}
         onDeleteItem={handleDeleteItem}
         handleToggleItem={handleToggleItem}
         handleClearItem={handleClearItem}
+        filterActive={filterActive}
+        showAll={showAll}
+        filterComplete={filterComplete}
       />
     </main>
   );
